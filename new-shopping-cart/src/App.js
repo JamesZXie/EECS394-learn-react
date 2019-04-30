@@ -22,16 +22,14 @@ class App extends React.Component {
   productList = () => {
     const products = this.props.products
     const productkeys = Object.keys(products);
-    const items = productkeys.map( (key) => 
+    return productkeys.map((key) => 
       <Product 
         title={products[key].title} 
         description={products[key].description}
         price={products[key].price} 
         sizes={products[key].availableSizes}
-        image={products[key].sku}
-      />
-      );
-    return items;
+        image={products[key].sku} />
+      );;
   }
 
   render() {
