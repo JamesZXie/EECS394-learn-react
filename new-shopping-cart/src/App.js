@@ -1,23 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './Styles/App.css';
 
 import Product from './Components/Product.js'
+import ShoppingCart from './Components/ShoppingCart.js'
 
 class App extends React.Component {
-
-  // ProductList = ()=> {
-  //   console.log(this.props)
-  //   const products = this.props.products
-  //   const listItems = Object.keys(products).map( (key) =>
-  //     <Product
-  //       title={products[key].title}
-  //     />
-  //   );
-  //   return (
-  //     listItems
-  //   );
-  // }
 
   productList = () => {
     const products = this.props.products
@@ -37,6 +25,10 @@ class App extends React.Component {
       <div className="app-container">
         <div className="products-container">
           {this.productList()}
+        </div>
+        <div className="cart-container">
+         
+          <ShoppingCart />
         </div>
         <div className="menu-container">
           MENU

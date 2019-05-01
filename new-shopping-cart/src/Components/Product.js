@@ -13,7 +13,7 @@ class Product extends Component{
         const sizes = this.props.sizes;
         const sizekeys = Object.keys(sizes)
         return sizekeys.map( (key) =>
-            <Button variant="outlined" className="product-sizebutton">{sizes[key]}</Button>
+            <Button size="small" variant="outlined" className="product-sizebutton">{sizes[key]}</Button>
         ) 
     }
 
