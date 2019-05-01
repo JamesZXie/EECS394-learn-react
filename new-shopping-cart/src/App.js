@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Styles/App.css';
 
 import Product from './Components/Product.js'
 
@@ -34,8 +34,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App-container">
-        {this.productList()}
+      <div className="app-container">
+        <div className="products-container">
+          {this.productList()}
+        </div>
+        <div className="menu-container">
+          MENU
+        </div>
       </div>
     );
   }
