@@ -4,16 +4,20 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Drawer from '@material-ui/core/Drawer';
 
-import '../Styles/ShoppingCart.css'
+import '../../Styles/CartItem.css'
 
-class ShoppingCart extends Component {
+class CartItem extends Component {
+    constructor(props){
+        super(props)
+    }
+
     render(){
         return(
             <div>
-                <ShoppingCartIcon></ShoppingCartIcon>
+                CartItemhere
             </div>
         )
     }
 }
 
-export default ShoppingCart;
+export default CartItem;

@@ -3,9 +3,15 @@ import logo from './logo.svg';
 import './Styles/App.css';
 
 import Product from './Components/Product.js'
-import ShoppingCart from './Components/ShoppingCart.js'
+import ShoppingCart from './Components/ShoppingCart/ShoppingCart.js'
+import Menu from './Components/Menu.js'
+import firebase from 'firebase';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
 
   productList = () => {
     const products = this.props.products
@@ -23,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-container">
+        <Menu />
         <div className="products-container">
           {this.productList()}
         </div>

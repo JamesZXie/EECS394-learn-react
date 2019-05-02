@@ -3,17 +3,34 @@ import "../Styles/Product.css"
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+import * as firebase from 'firebase';
+
 class Product extends Component{
 
-    onSelectSize = (size) => {
-
+    onSelectSize = (props, size) => {
+        const title = props.title;
+        const price = props.price;
+        const image = "./data/products/" + this.props.image + "_1.jpg"
+        const description = props.description
+        const newRef = firebase.database().ref().child('Cart').push();
+        newRef.set({  
+            title: title,
+            price: price,
+            image: image,
+            size: size,
+            description: description,
+        });
     }
 
     renderSizes = () => {
         const sizes = this.props.sizes;
         const sizekeys = Object.keys(sizes)
         return sizekeys.map( (key) =>
-            <Button size="small" variant="outlined" className="product-sizebutton">{sizes[key]}</Button>
+            <Button 
+                size="small" 
+                variant="outlined" 
+                className="product-sizebutton" 
+                onClick={()=> { this.onSelectSize(this.props, sizes[key]) }}>{sizes[key]}</Button>
         ) 
     }
 
