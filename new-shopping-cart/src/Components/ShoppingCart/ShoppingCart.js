@@ -36,16 +36,21 @@ class ShoppingCart extends Component {
     }
 
     renderCart = (cart) => {
-        const cartkeys = Object.keys(cart);
-        return cartkeys.map((key) => 
-            <CartItem
-                title={cart[key].title} 
-                description={cart[key].description}
-                price={cart[key].price} 
-                size={cart[key].size}
-                image={cart[key].image}
-                blahkey={key} />
-        );;
+        if (cart != null) {
+            const cartkeys = Object.keys(cart);
+            return cartkeys.map((key) => 
+                <CartItem
+                    title={cart[key].title} 
+                    description={cart[key].description}
+                    price={cart[key].price} 
+                    size={cart[key].size}
+                    image={cart[key].image}
+                    blahkey={key} />
+            );;
+        }
+        else {
+            return (<div style= {{width: "400px", textAlign: "center", paddingTop: "10px"}}>Nothing in Cart</div>)
+        }
     }
 
     render(){

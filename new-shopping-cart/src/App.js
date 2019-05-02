@@ -5,13 +5,23 @@ import './Styles/App.css';
 import Product from './Components/Product.js'
 import ShoppingCart from './Components/ShoppingCart/ShoppingCart.js'
 import Menu from './Components/Menu.js'
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      inventory: null,
+    }
   }
+
+  componentDidMount() {
+    const inventoryRef = firebase.database().ref().child('inventory')
+    inventoryRef.once('value').then((snapshot) => {
+      this.setState({inventory: snapshot.val(),})
+    })
+  }
+
 
   productList = () => {
     const products = this.props.products

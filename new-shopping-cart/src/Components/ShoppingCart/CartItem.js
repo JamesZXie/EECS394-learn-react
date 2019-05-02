@@ -22,10 +22,11 @@ class CartItem extends Component {
                 <IconButton aria-label="Delete" onClick={()=> {this.deleteItem()}}>
                     <DeleteIcon />
                 </IconButton>
+                <img src = {this.props.image} style={{height: "80px"}}></img>
                 {this.props.title}
                 {this.props.price}
                 {this.props.description}
-                {this.props.image}
+                
                 {this.props.size}
             </div>
         )
