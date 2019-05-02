@@ -6,8 +6,29 @@ import Button from '@material-ui/core/Button';
 import * as firebase from 'firebase';
 
 class Product extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            S: 0,
+            M: 0,
+            L: 0,
+            XL: 0,
+        }
+    }
+
+    componentDidUpdate() {
+        const inventory = this.props.hasSizes()
+        console.log(this.props.hasSizes())
+        this.setState = ({
+            S: inventory.S,
+            M: inventory.M,
+            L: inventory.L,
+            XL: inventory.XL
+        })
+    }
 
     onSelectSize = (props, size) => {
+        console.log(this.state)
         const title = props.title;
         const price = props.price;
         const image = "./data/products/" + this.props.image + "_1.jpg"

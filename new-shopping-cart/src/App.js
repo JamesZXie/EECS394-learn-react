@@ -10,18 +10,29 @@ import * as firebase from 'firebase';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       inventory: null,
     }
+    
   }
 
   componentDidMount() {
     const inventoryRef = firebase.database().ref().child('inventory')
-    inventoryRef.once('value').then((snapshot) => {
-      this.setState({inventory: snapshot.val(),})
+    inventoryRef.once('value', (snap) => {
+      this.setState({inventory: snap.val()})
     })
   }
 
+
+  hasSizes = (size, key) => {
+    if (this.state.inventory != null){
+      return (this.state.inventory[key])
+    }
+    else {
+      console.log("STILL FUCKED")
+    }
+  }
 
   productList = () => {
     const products = this.props.products
@@ -32,7 +43,9 @@ class App extends React.Component {
         description={products[key].description}
         price={products[key].price} 
         sizes={products[key].availableSizes}
-        image={products[key].sku} />
+        image={products[key].sku}
+        hasSizes = {(size) => this.hasSizes(size, key)}
+        />
       );;
   }
 
