@@ -43,7 +43,8 @@ class ShoppingCart extends Component {
                 description={cart[key].description}
                 price={cart[key].price} 
                 size={cart[key].size}
-                image={cart[key].image} />
+                image={cart[key].image}
+                blahkey={key} />
         );;
     }
 
