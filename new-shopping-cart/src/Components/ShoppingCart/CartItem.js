@@ -14,7 +14,11 @@ class CartItem extends Component {
     render(){
         return(
             <div>
-                CartItemhere
+                {this.props.title}
+                {this.props.price}
+                {this.props.description}
+                {this.props.image}
+                {this.props.size}
             </div>
         )
     }

@@ -14,7 +14,15 @@ class ShoppingCart extends Component {
     constructor(props){
         super(props)
         this.state = {
-            speed: [10, 11]
+            Cart: {
+                nonexistentitem: {
+                    title: "none",
+                    description: "none",
+                    price: "none",
+                    size: "none",
+                    image: "none",
+                }
+            }
         };
 
     }
@@ -22,32 +30,26 @@ class ShoppingCart extends Component {
     componentDidMount() {
         const cartRef = firebase.database().ref().child('Cart');
         cartRef.on('value', snap => {
-            console.log(snap.val())
-            for (var cartItem in snap.val()) {
-                console.log(cartItem)
-            }
+            // takes a JSON string and renders cart from it.
+            this.setState({Cart: snap.val()});
         })
     }
 
-    renderCart = () => {
-        const products = this.props.cart
-        const productkeys = Object.keys(products);
-        return productkeys.map((key) => 
-        <CartItem
-            title={products[key].title} 
-            description={products[key].description}
-            price={products[key].price} 
-            sizes={products[key].availableSizes}
-            image={products[key].sku} />
+    renderCart = (cart) => {
+        const cartkeys = Object.keys(cart);
+        return cartkeys.map((key) => 
+            <CartItem
+                title={cart[key].title} 
+                description={cart[key].description}
+                price={cart[key].price} 
+                size={cart[key].size}
+                image={cart[key].image} />
         );;
     }
 
     render(){
         return(
-            <div>
-                {this.state.speed}
-                <button onClick={()=> {this.test()}}>CLICK</button>
-            </div>
+            <div>{this.renderCart(this.state.Cart)} </div>
         )
     }
 }

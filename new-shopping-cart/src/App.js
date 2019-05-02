@@ -33,10 +33,6 @@ class App extends React.Component {
         <div className="products-container">
           {this.productList()}
         </div>
-        <div className="cart-container">
-         
-          <ShoppingCart />
-        </div>
         <div className="menu-container">
           MENU
         </div>
